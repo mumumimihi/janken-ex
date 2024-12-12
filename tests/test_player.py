@@ -21,5 +21,15 @@ class TestPlayerPon(unittest.TestCase):
         result = player_pon()
         self.assertEqual(result, "パー")
     
+    @patch('builtins.input', side_effect=['0'])
+    def test_player0(self, mock_input):
+        result = player_pon()
+        self.assertIsNone(result)
+
+    @patch('builtins.input', side_effect=['4'])
+    def test_player4(self, mock_input):
+        result = player_pon()
+        self.assertIsNone(result)  # 何も返さない場合
+    
 if __name__ == '__main__':
     unittest.main()
